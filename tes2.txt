@@ -1,0 +1,313 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Inisialisasi list barang
+        ListBarang listBarang = new ListBarang();
+        // Inisialisasi list transaksi
+        ArrayList<Transaksi> listTransaksi = new ArrayList<>();
+
+        // Membuat beberapa barang contoh
+        Barang barang1 = new Barang("001", "Laptop", 8000000);
+        Barang barang2 = new Barang("002", "Smartphone", 5000000);
+        listBarang.addBarang(barang1);
+        listBarang.addBarang(barang2);
+
+        // Membuat akun admin
+        Admin admin = new Admin("admin", "admin123");
+
+        // Membuat objek admin driver
+        AdminDriver adminDriver = new AdminDriver(admin, listBarang, listTransaksi);
+
+        // Menampilkan menu login
+        login(adminDriver, scanner);
+    }
+
+    public static void login(AdminDriver adminDriver, Scanner scanner) {
+        System.out.println("Login:");
+
+        System.out.print("Username: ");
+        String username = scanner.nextLine();
+
+        System.out.print("Password: ");
+        String password = scanner.nextLine();
+
+        // Verifikasi login admin
+        if (adminDriver.akun.verifyLogin(username, password)) {
+            System.out.println("Login berhasil!");
+            // Pemanggilan fungsi atau menu admin setelah login
+            adminDriver.menuAdmin(scanner);
+        } else {
+            System.out.println("Login gagal. Coba lagi.");
+            // Pemanggilan kembali fungsi login jika login gagal
+            login(adminDriver, scanner);
+        }
+    }
+}
+
+public abstract class Akun {
+    public String username;
+    public String password;
+
+    public Akun(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public boolean verifyLogin(String inputUsername, String inputPassword) {
+        return this.username.equals(inputUsername) && this.password.equals(inputPassword);
+    }
+}
+
+public class Admin extends Akun {
+    public Admin(String username, String password) {
+        super(username, password);
+    }
+}
+
+public class AdminDriver extends Driver {
+    public Admin akun;
+    public ListBarang listBarang;
+    public ArrayList<Transaksi> listTransaksi;
+
+    public AdminDriver(Admin akun, ListBarang listBarang, ArrayList<Transaksi> listTransaksi) {
+        this.akun = akun;
+        this.listBarang = listBarang;
+        this.listTransaksi = listTransaksi;
+    }
+
+    // Fungsi atau menu admin
+    public void menuAdmin(Scanner scanner) {
+        int choice;
+        do {
+            System.out.println("Menu Admin:");
+            System.out.println("1. Tambah Barang");
+            System.out.println("2. Hapus Barang");
+            System.out.println("3. Edit Barang");
+            System.out.println("4. Lihat Transaksi");
+            System.out.println("5. Keluar");
+
+            System.out.print("Pilih: ");
+            choice = scanner.nextInt();
+            scanner.nextLine(); // Membuang karakter newline setelah nextInt
+
+            switch (choice) {
+                case 1:
+                    tambahBarang(scanner);
+                    break;
+                case 2:
+                    hapusBarang(scanner);
+                    break;
+                case 3:
+                    editBarang(scanner);
+                    break;
+                case 4:
+                    lihatTransaksi();
+                    break;
+                case 5:
+                    System.out.println("Keluar dari Menu Admin");
+                    break;
+                default:
+                    System.out.println("Pilihan tidak valid. Coba lagi.");
+            }
+        } while (choice != 5);
+    }
+
+    private void tambahBarang(Scanner scanner) {
+        System.out.print("Masukkan ID Barang: ");
+        String id = scanner.nextLine();
+        System.out.print("Masukkan Nama Barang: ");
+        String nama = scanner.nextLine();
+        System.out.print("Masukkan Harga Barang: ");
+        double harga = scanner.nextDouble();
+
+        Barang newBarang = new Barang(id, nama, harga);
+        listBarang.addBarang(newBarang);
+        System.out.println("Barang berhasil ditambahkan!");
+    }
+
+    private void hapusBarang(Scanner scanner) {
+        System.out.print("Masukkan ID Barang yang akan dihapus: ");
+        String id = scanner.nextLine();
+
+        // Hapus barang dengan ID yang sesuai
+        listBarang.hapusBarang(id);
+        System.out.println("Barang berhasil dihapus!");
+    }
+
+    private void editBarang(Scanner scanner) {
+        System.out.print("Masukkan ID Barang yang akan diubah: ");
+        String id = scanner.nextLine();
+
+        // Cari barang dengan ID yang sesuai
+        Barang barang = listBarang.cariBarang(id);
+
+        if (barang != null) {
+            System.out.print("Masukkan Nama Barang baru: ");
+            String namaBaru = scanner.nextLine();
+            System.out.print("Masukkan Harga Barang baru: ");
+            double hargaBaru = scanner.nextDouble();
+
+            // Update informasi barang
+            barang.setNama(namaBaru);
+            barang.setHarga(hargaBaru);
+
+            System.out.println("Barang berhasil diubah!");
+        } else {
+            System.out.println("Barang dengan ID tersebut tidak ditemukan.");
+        }
+    }
+
+    private void lihatTransaksi() {
+        // Tampilkan list transaksi yang ada
+        for (Transaksi transaksi : listTransaksi) {
+            System.out.println("Transaksi ID: " + transaksi.getId());
+            // Tampilkan informasi tambahan sesuai kebutuhan
+        }
+    }
+}
+
+public class Barang {
+    private String id;
+    private String nama;
+    private double harga;
+
+    public Barang(String id, String nama, double harga) {
+        this.id = id;
+        this.nama = nama;
+        this.harga = harga;
+    }
+
+    // Getter dan setter sesuai kebutuhan
+    public String getId() {
+        return id;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public double getHarga() {
+        return harga;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public void setHarga(double harga) {
+        this.harga = harga;
+    }
+}
+
+public class ListBarang {
+    public ArrayList<Barang> listBarang = new ArrayList<>();
+
+    public void addBarang(Barang barang) {
+        listBarang.add(barang);
+    }
+
+    public void hapusBarang(String id) {
+        // Hapus barang dengan ID yang sesuai
+        Barang barang = cariBarang(id);
+        if (barang != null) {
+            listBarang.remove(barang);
+        }
+    }
+
+    public Barang cariBarang(String id) {
+        // Cari barang dengan ID yang sesuai
+        for (Barang barang : listBarang) {
+            if (barang.getId().equals(id)) {
+                return barang;
+            }
+        }
+        return null; // Return null jika barang tidak ditemukan
+    }
+}
+
+public class Transaksi {
+    private static int counter = 1; // Untuk meng-generate ID transaksi secara otomatis
+    private int id;
+    private Customer customer;
+    private ArrayList<Barang> barang;
+
+    public Transaksi(Customer customer, ArrayList<Barang> barang) {
+        this.id = counter++;
+        this.customer = customer;
+        this.barang = barang;
+    }
+
+    // Getter sesuai kebutuhan
+    public int getId() {
+        return id;
+    }
+}
+
+public class Customer extends Akun {
+    public Keranjang keranjang;
+    public ArrayList<Invoice> invoiceSelesai;
+
+    public Customer(String username, String password) {
+        super(username, password);
+        this.keranjang = new Keranjang();
+        this.invoiceSelesai = new ArrayList<>();
+    }
+}
+
+public class CustomerDriver extends Driver {
+    public Customer akun;
+    public Transaksi transaksi;
+    public ListBarang barang;
+
+    // Tambahkan fungsi atau menu customer jika diperlukan
+}
+
+public class Driver {
+    // Kosongkan untuk sementara
+}
+
+public class Invoice {
+    private static int counter = 1; // Untuk meng-generate ID invoice secara otomatis
+    private int id;
+    private Transaksi transaksi;
+    private Pembayaran pembayaran;
+
+    public Invoice(Transaksi transaksi, Pembayaran pembayaran) {
+        this.id = counter++;
+        this.transaksi = transaksi;
+        this.pembayaran = pembayaran;
+    }
+
+    // Getter sesuai kebutuhan
+    public int getId() {
+        return id;
+    }
+}
+
+public class Keranjang {
+    public ArrayList<Barang> barang = new ArrayList<>();
+
+    public void tambahBarang(Barang barang) {
+        this.barang.add(barang);
+    }
+
+    // Tambahkan fungsi atau metode lain sesuai kebutuhan
+}
+
+public abstract class Pembayaran {
+    public String id;
+    
+    // Tambahkan atribut atau metode lain sesuai kebutuhan
+}
+
+public class QRIS extends Pembayaran {
+    // Tambahkan atribut atau metode khusus untuk metode pembayaran QRIS jika diperlukan
+}
+
+public class COD extends Pembayaran {
+    // Tambahkan atribut atau metode khusus untuk metode pembayaran COD jika diperlukan
+}
