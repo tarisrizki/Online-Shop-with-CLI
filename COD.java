@@ -1,8 +1,7 @@
 public class COD extends Pembayaran {
-    public void printCOD()
-    {
-        System.out.println("anda melakukan pembayaran dengan COD");
-        System.out.println("id pembayaran :");
+   @Override
+    public void prosesPembayaran(double total) {
+        System.out.println("Pembayaran sebesar Rp" + total + " dengan metode COD berhasil.");
+        System.out.println("Silakan bayar tunai saat barang diterima.");
     }
-    // Tambahkan atribut atau metode khusus untuk metode pembayaran COD jika diperlukan
 }
