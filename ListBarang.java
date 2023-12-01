@@ -15,6 +15,13 @@ public class ListBarang {
         }
     }
 
+    public void displayBarang() {
+        System.out.println("Daftar Barang yang Tersedia:");
+        for (Barang barang : listBarang) {
+            System.out.println(barang);
+        }
+    }
+
     public Barang cariBarang(String id) {
         // Cari barang dengan ID yang sesuai
         for (Barang barang : listBarang) {
