@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.List;
 
-public class Customer extends Akun {
-    public Keranjang keranjang;
-    public List<Transaksi> transaksiSelesai;
+class Customer extends Akun {
+    private Keranjang keranjang;
+    private List<Transaksi> transaksiSelesai;
 
-   public Customer(String username, String password) {
+    public Customer(String username, String password) {
         super(username, password);
         keranjang = new Keranjang();
         transaksiSelesai = new ArrayList<>();
