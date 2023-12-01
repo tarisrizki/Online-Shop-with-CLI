@@ -7,5 +7,11 @@ public class Keranjang {
         this.barang.add(barang);
     }
 
-    // Tambahkan fungsi atau metode lain sesuai kebutuhan
+    public void clearKeranjang() {
+        daftarBarang.clear();
+    }
+
+    public List<Barang> getListBarang() {
+        return daftarBarang;
+    }
 }
