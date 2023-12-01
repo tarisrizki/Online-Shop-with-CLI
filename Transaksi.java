@@ -1,7 +1,7 @@
-import java.util.ArrayList;
+import java.util.List;
 
-public class Transaksi {
-    private static int counter = 1; // Untuk meng-generate ID transaksi secara otomatis
+class Transaksi {
+    private static int counter = 1;
     private int id;
     private List<Barang> daftarBarang;
     private Pembayaran metodePembayaran;
