@@ -1,8 +1,13 @@
 public class QRIS extends Pembayaran {
-    public void printQRIS()
-    {
-        System.out.println("anda melakukan pembayaran dengan COD");
-        System.out.println("id pembayaran :");
+    public String qrCode;
+
+    public QRIS(String qrCode) {
+        this.qrCode = qrCode;
     }
-    // Tambahkan atribut atau metode khusus untuk metode pembayaran QRIS jika diperlukan
+
+    @Override
+    public void prosesPembayaran(double total) {
+        System.out.println("Pembayaran sebesar Rp" + total + " dengan QRIS berhasil.");
+        System.out.println("QR Code: " + qrCode);
+    }
 }
