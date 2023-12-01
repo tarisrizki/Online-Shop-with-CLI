@@ -1,6 +1,6 @@
-public abstract class Akun {
-    public String username;
-    public String password;
+abstract class Akun {
+    private String username;
+    private String password;
 
     public Akun(String username, String password) {
         this.username = username;
@@ -8,10 +8,10 @@ public abstract class Akun {
     }
 
     public boolean verifyLogin(String inputUsername, String inputPassword) {
-        return this.username.equals(inputUsername) && this.password.equals(inputPassword);
+        return username.equals(inputUsername) && password.equals(inputPassword);
     }
 
-     public String getUsername() {
+    public String getUsername() {
         return username;
     }
 }
