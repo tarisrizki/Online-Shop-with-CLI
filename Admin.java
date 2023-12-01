@@ -1,9 +1,12 @@
-public class Admin extends Akun {
+import java.util.ArrayList;
+import java.util.List;
+
+class Admin extends Akun {
     private List<Customer> daftarCustomer;
-    
+
     public Admin(String username, String password) {
         super(username, password);
-         daftarCustomer = new ArrayList<>();
+        daftarCustomer = new ArrayList<>();
     }
 
     public void tambahCustomer(Customer customer) {
@@ -35,6 +38,11 @@ public class Admin extends Akun {
         }
     }
 
+    public void lihatDaftarBarang(ListBarang listBarang) {
+        System.out.println("Daftar Barang Terbaru:");
+        listBarang.displayBarang();
+    }
+}
     public void lihatDaftarBarang(ListBarang listBarang) {
         System.out.println("Daftar Barang Terbaru:");
         listBarang.displayBarang();
