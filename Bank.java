@@ -1,5 +1,5 @@
-public class Bank extends Pembayaran{
-    public void String bank;
+class Bank extends Pembayaran {
+    private String bank;
 
     public Bank(String bank) {
         this.bank = bank;
