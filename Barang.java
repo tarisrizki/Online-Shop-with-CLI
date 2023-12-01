@@ -1,4 +1,4 @@
-public class Barang {
+class Barang {
     private String id;
     private String nama;
     private double harga;
@@ -9,21 +9,24 @@ public class Barang {
         this.harga = harga;
     }
 
-    // Getter dan setter sesuai kebutuhan
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNama() {
         return nama;
     }
 
-    public double getHarga() {
-        return harga;
-    }
-
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public double getHarga() {
+        return harga;
     }
 
     public void setHarga(double harga) {
