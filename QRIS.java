@@ -1,5 +1,5 @@
-public class QRIS extends Pembayaran {
-    public String qrCode;
+class QRIS extends Pembayaran {
+    private String qrCode;
 
     public QRIS(String qrCode) {
         this.qrCode = qrCode;
