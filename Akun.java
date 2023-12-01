@@ -10,4 +10,8 @@ public abstract class Akun {
     public boolean verifyLogin(String inputUsername, String inputPassword) {
         return this.username.equals(inputUsername) && this.password.equals(inputPassword);
     }
+
+     public String getUsername() {
+        return username;
+    }
 }
