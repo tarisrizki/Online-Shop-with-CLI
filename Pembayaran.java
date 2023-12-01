@@ -1,3 +1,3 @@
-public abstract class Pembayaran {
-     public abstract void prosesPembayaran(double total);
+abstract class Pembayaran {
+    public abstract void prosesPembayaran(double total);
 }
