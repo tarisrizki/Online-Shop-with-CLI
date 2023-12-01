@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.List;
 
-public class Keranjang {
-    public ArrayList<Barang> barang = new ArrayList<>();
+class Keranjang {
+    private List<Barang> daftarBarang = new ArrayList<>();
 
     public void tambahBarang(Barang barang) {
-        this.barang.add(barang);
+        daftarBarang.add(barang);
     }
 
     public void clearKeranjang() {
