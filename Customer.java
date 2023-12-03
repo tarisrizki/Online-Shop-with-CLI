@@ -1,3 +1,8 @@
+/**
+ * Kelas ini mewarisi dari kelas Akun dan merepresentasikan pelanggan toko online. Pelanggan dapat melihat daftar barang, menambahkan barang ke keranjang, checkout, dan melihat riwayat belanja.
+ * @author Naufal Aqil, M. Taris Riski, Zuwi Pertiwi
+ * @version 04/12/2023
+ */
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,16 +10,19 @@ class Customer extends Akun {
     private Keranjang keranjang;
     private List<Transaksi> transaksiSelesai;
 
+    //constructor
     public Customer(String username, String password) {
         super(username, password);
         keranjang = new Keranjang();
         transaksiSelesai = new ArrayList<>();
     }
 
+    //getter
     public List<Transaksi> getTransaksiSelesai() {
         return transaksiSelesai;
     }
 
+    //methode untuk melihat list barang
     public void lihatListBarang(ListBarang listBarang) {
         System.out.println("List Barang yang Dijual:");
         listBarang.displayBarang();
@@ -25,11 +33,13 @@ class Customer extends Akun {
         admin.lihatDaftarBarang(listBarang);
     }
 
+    //methode untuk menambahkan barang ke keranjang
     public void tambahKeKeranjang(Barang barang) {
         keranjang.tambahBarang(barang);
         System.out.println(barang.getNama() + " telah ditambahkan ke keranjang.");
     }
 
+    //methode untuk melakukan checkout
     public void checkout(Pembayaran metodePembayaran) {
         List<Barang> barangDibeli = keranjang.getListBarang();
         if (barangDibeli.isEmpty()) {
@@ -43,6 +53,7 @@ class Customer extends Akun {
         }
     }
 
+    //methode untuk melihat history belanja
     public void lihatHistoryBelanja() {
         System.out.println("History Belanja:");
         for (Transaksi transaksi : transaksiSelesai) {
