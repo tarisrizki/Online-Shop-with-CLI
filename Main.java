@@ -1,3 +1,8 @@
+/**
+ * Kelas ini berisi metode main sebagai titik masuk program utama. Digunakan untuk inisialisasi dan pengaturan awal toko online.
+ * @author Naufal Aqil, M. Taris Riski, Zuwi Pertiwi
+ * @version 04/12/2023
+ */
 import java.util.Scanner;
 
 public class Main {
@@ -25,55 +30,22 @@ public class Main {
             // Menambahkan pelanggan ke daftar pelanggan admin
             System.out.println("===============================");
             System.out.println("Selamat datang di Online Shop");
-            System.out.println("Silahkan login akun?");
-            System.out.println("1. Admin");
-            System.out.println("2. Customer");
+            // System.out.println("Apakah anda sudah memiliki akun?");
+            System.out.println("Tekan 1 untuk login dan 2 untuk menghentikan program");
             int pilihan = scanner.nextInt();
             scanner.nextLine();
             System.out.println("===============================\n");
             switch (pilihan) {
                 case 1:
-                login(admin, listBarang);
-                break;
+                    Driver.login(admin, listBarang);
+                    break;
                 case 2:
-                login(admin, listBarang);
-                break;
-                case 3:
-                program = false;
+                    program = false;
             default:
                 break;
             }
         }
     }
-        
-        // Menu Login
-        public static void login(Admin admin, ListBarang listBarang){
-        System.out.print("Username: ");
-        String username = scanner.nextLine();
-        System.out.print("Password: ");
-        String password = scanner.nextLine();
-
-        if (admin.verifyLogin(username, password)) {
-            // Admin login
-            System.out.println("Admin login berhasil.");
-            AdminDriver adminDriver = new AdminDriver(admin, listBarang, null);
-            adminDriver.menuAdmin(scanner);
-        } else {
-            // Pelanggan login
-            boolean pelangganLoginBerhasil = false;
-            for (Customer c : admin.getDaftarCustomer()) {
-                if (c.verifyLogin(username, password)) {
-                    CustomerDriver customerDriver = new CustomerDriver();
-                    customerDriver.menuPelanggan(c, listBarang, scanner);
-                    pelangganLoginBerhasil = true;
-                    break;
-                }
-            }
-            if (!pelangganLoginBerhasil) {
-                System.out.println("Login gagal. Coba lagi.");
-            }
-        }
-    }
-
 }
+    
 
