@@ -29,16 +29,16 @@ public class AdminDriver extends Driver {
 
             switch (choice) {
                 case 1:
-                    tambahBarang(scanner);
+                    tambahBarang(listBarang, scanner);
                     break;
                 case 2:
-                    hapusBarang(scanner);
+                    hapusBarang(listBarang, scanner);
                     break;
                 case 3:
-                    editBarang(scanner);
+                    editBarang(listBarang, scanner);
                     break;
                 case 4:
-                    lihatTransaksi();
+                    akun.lihatTransaksi();
                     break;
                 case 5:
                     System.out.println("Keluar dari Menu Admin");
@@ -49,7 +49,7 @@ public class AdminDriver extends Driver {
         } while (choice != 5);
     }
 
-    private void tambahBarang(Scanner scanner) {
+    private void tambahBarang(ListBarang listBarang, Scanner scanner) {
         System.out.print("Masukkan ID Barang: ");
         String id = scanner.nextLine();
         System.out.print("Masukkan Nama Barang: ");
@@ -62,7 +62,7 @@ public class AdminDriver extends Driver {
         System.out.println("Barang berhasil ditambahkan!");
     }
 
-    private void hapusBarang(Scanner scanner) {
+    private void hapusBarang(ListBarang listBarang, Scanner scanner) {
         System.out.print("Masukkan ID Barang yang akan dihapus: ");
         String id = scanner.nextLine();
 
@@ -71,7 +71,7 @@ public class AdminDriver extends Driver {
         System.out.println("Barang berhasil dihapus!");
     }
 
-    private void editBarang(Scanner scanner) {
+    private void editBarang(ListBarang listBarang, Scanner scanner) {
         System.out.print("Masukkan ID Barang yang akan diubah: ");
         String id = scanner.nextLine();
 
@@ -91,14 +91,6 @@ public class AdminDriver extends Driver {
             System.out.println("Barang berhasil diubah!");
         } else {
             System.out.println("Barang dengan ID tersebut tidak ditemukan.");
-        }
-    }
-
-    private void lihatTransaksi() {
-        // Tampilkan list transaksi yang ada
-        for (Transaksi transaksi : listTransaksi) {
-            System.out.println("Transaksi ID: " + transaksi.getId());
-            // Tampilkan informasi tambahan sesuai kebutuhan
         }
     }
 }

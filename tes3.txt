@@ -59,7 +59,7 @@ public class AdminDriver extends Driver {
     }
 
     // Fungsi atau menu admin
-    public void menuAdmin(Scanner scanner) {
+    public void menuAdmin(Admin admin, ListBarang listBarang, Scanner scanner) {
         int choice;
         do {
             System.out.println("Menu Admin:");
@@ -84,7 +84,7 @@ public class AdminDriver extends Driver {
                     editBarang(listBarang, scanner);
                     break;
                 case 4:
-                    akun.lihatTransaksi();
+                    lihatTransaksi();
                     break;
                 case 5:
                     System.out.println("Keluar dari Menu Admin");
@@ -139,6 +139,14 @@ public class AdminDriver extends Driver {
             System.out.println("Barang dengan ID tersebut tidak ditemukan.");
         }
     }
+
+    private void lihatTransaksi() {
+        // Tampilkan list transaksi yang ada
+        for (Transaksi transaksi : listTransaksi) {
+            System.out.println("Transaksi ID: " + transaksi.getId());
+            // Tampilkan informasi tambahan sesuai kebutuhan
+        }
+    }
 }
 
 abstract class Akun {
@@ -170,6 +178,47 @@ class Bank extends Pembayaran {
     public void prosesPembayaran(double total) {
         System.out.println("Pembayaran sebesar Rp" + total + " dengan transfer bank berhasil.");
         System.out.println("Bank: " + bank);
+    }
+}
+
+class Barang {
+    private String id;
+    private String nama;
+    private double harga;
+
+    public Barang(String id, String nama, double harga) {
+        this.id = id;
+        this.nama = nama;
+        this.harga = harga;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public double getHarga() {
+        return harga;
+    }
+
+    public void setHarga(double harga) {
+        this.harga = harga;
+    }
+
+    @Override
+    public String toString() {
+        return "[" + id + "] " + nama + " - Rp" + harga;
     }
 }
 
@@ -461,7 +510,7 @@ public class Main {
             // Admin login
             System.out.println("Admin login berhasil.");
             AdminDriver adminDriver = new AdminDriver(admin, listBarang, null);
-            adminDriver.menuAdmin(scanner);
+            adminDriver.menuAdmin(admin, listBarang, scanner);
         } else {
             // Pelanggan login
             boolean pelangganLoginBerhasil = false;
@@ -537,5 +586,46 @@ class Transaksi {
 
     public Pembayaran getMetodePembayaran() {
         return metodePembayaran;
+    }
+}
+
+class Barang {
+    private String id;
+    private String nama;
+    private double harga;
+
+    public Barang(String id, String nama, double harga) {
+        this.id = id;
+        this.nama = nama;
+        this.harga = harga;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public double getHarga() {
+        return harga;
+    }
+
+    public void setHarga(double harga) {
+        this.harga = harga;
+    }
+
+    @Override
+    public String toString() {
+        return "[" + id + "] " + nama + " - Rp" + harga;
     }
 }
