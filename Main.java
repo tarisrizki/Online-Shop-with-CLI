@@ -31,7 +31,9 @@ public class Main {
             System.out.println("===============================");
             System.out.println("Selamat datang di Online Shop");
             // System.out.println("Apakah anda sudah memiliki akun?");
-            System.out.println("Tekan 1 untuk login dan 2 untuk menghentikan program");
+            System.out.println("Ingin Login sebagai apa?");
+            System.out.println("1. Admin");
+            System.out.println("2. Customer");
             int pilihan = scanner.nextInt();
             scanner.nextLine();
             System.out.println("===============================\n");
@@ -40,6 +42,9 @@ public class Main {
                     Driver.login(admin, listBarang);
                     break;
                 case 2:
+                    Driver.login(admin, listBarang);
+                    break;
+                case 3:
                     program = false;
             default:
                 break;
