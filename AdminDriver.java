@@ -1,13 +1,18 @@
+/**
+ * Kelas ini mengelola interaksi admin dengan sistem toko online. Admin dapat menambahkan, menghapus, dan mengedit barang, serta melihat transaksi.
+ * @author Naufal Aqil, M. Taris Riski, Zuwi Pertiwi
+ * @version 04/12/2023
+ */
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class AdminDriver extends Driver {
+class AdminDriver extends Driver {
     public Admin akun;
     public ListBarang listBarang;
     public ArrayList<Transaksi> listTransaksi;
 
+    //constructor
     public AdminDriver(Admin akun, ListBarang listBarang, ArrayList<Transaksi> listTransaksi) {
-        super();
         this.akun = akun;
         this.listBarang = listBarang;
         this.listTransaksi = listTransaksi;
@@ -50,6 +55,7 @@ public class AdminDriver extends Driver {
         } while (choice != 5);
     }
 
+    //methode tambah barang
     private void tambahBarang(ListBarang listBarang, Scanner scanner) {
         System.out.print("Masukkan ID Barang: ");
         String id = scanner.nextLine();
@@ -63,6 +69,7 @@ public class AdminDriver extends Driver {
         System.out.println("Barang berhasil ditambahkan!");
     }
 
+    //methode untuk menghapus barang
     private void hapusBarang(ListBarang listBarang, Scanner scanner) {
         System.out.print("Masukkan ID Barang yang akan dihapus: ");
         String id = scanner.nextLine();
@@ -72,6 +79,7 @@ public class AdminDriver extends Driver {
         System.out.println("Barang berhasil dihapus!");
     }
 
+    //methode untuk mengedit barang
     private void editBarang(ListBarang listBarang, Scanner scanner) {
         System.out.print("Masukkan ID Barang yang akan diubah: ");
         String id = scanner.nextLine();
