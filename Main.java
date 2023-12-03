@@ -25,8 +25,9 @@ public class Main {
             // Menambahkan pelanggan ke daftar pelanggan admin
             System.out.println("===============================");
             System.out.println("Selamat datang di Online Shop");
-            System.out.println("Apakah anda sudah memiliki akun?");
-            System.out.println("Jika sudah tekan 1 untuk login dan jika belum tekan 2 untuk sign up");
+            System.out.println("Silahkan login akun?");
+            System.out.println("1. Admin");
+            System.out.println("2. Customer");
             int pilihan = scanner.nextInt();
             scanner.nextLine();
             System.out.println("===============================\n");
@@ -35,7 +36,7 @@ public class Main {
                 login(admin, listBarang);
                 break;
                 case 2:
-                signUp(admin, scanner, null);
+                login(admin, listBarang);
                 break;
                 case 3:
                 program = false;
@@ -74,20 +75,5 @@ public class Main {
         }
     }
 
-    //signup
-    public static void signUp(Admin admin, Scanner scanner, Customer pelanggan) {
-        System.out.println("Customer Signup:");
-        System.out.print("Masukkan username anda: ");
-        String usernamePelanggan = scanner.nextLine();
-        System.out.print("Masukkan password anda: ");
-        String passwordPelanggan = scanner.nextLine();
-
-        pelanggan = new Customer(usernamePelanggan, passwordPelanggan);
-        admin.tambahCustomer(pelanggan);
-
-        System.out.println("Customer account berhasil dibuat.");
-        login(admin, null);
-    }
 }
-    
 

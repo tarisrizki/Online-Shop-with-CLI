@@ -1,9 +1,15 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CustomerDriver extends Driver {
     public Customer akun;
-    public Transaksi transaksi;
-    public ListBarang barang;
+     public List<Transaksi> riwayatBelanja;
+
+     public CustomerDriver() {
+        super(); // panggil constructor Driver
+        this.riwayatBelanja = new ArrayList<>();
+    }
 
     public void menuPelanggan(Customer pelanggan, ListBarang listBarang, Scanner scanner) {
         int choice;

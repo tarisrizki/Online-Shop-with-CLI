@@ -1,3 +1,9 @@
 public class Driver {
-    // Kosongkan untuk sementara
+
+    private String name;
+    
+    public void drive(){
+        System.out.println(name + " is driving"); 
+    }
+
 }

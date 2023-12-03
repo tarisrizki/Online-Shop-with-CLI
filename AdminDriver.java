@@ -7,6 +7,7 @@ public class AdminDriver extends Driver {
     public ArrayList<Transaksi> listTransaksi;
 
     public AdminDriver(Admin akun, ListBarang listBarang, ArrayList<Transaksi> listTransaksi) {
+        super();
         this.akun = akun;
         this.listBarang = listBarang;
         this.listTransaksi = listTransaksi;
