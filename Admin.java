@@ -43,8 +43,3 @@ class Admin extends Akun {
         listBarang.displayBarang();
     }
 }
-    public void lihatDaftarBarang(ListBarang listBarang) {
-        System.out.println("Daftar Barang Terbaru:");
-        listBarang.displayBarang();
-    }
-}
