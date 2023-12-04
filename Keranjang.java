@@ -9,17 +9,27 @@ import java.util.List;
 class Keranjang {
     private List<Barang> daftarBarang = new ArrayList<>();
 
-    //methode manambah barang ke keranjang
+    /**
+     * Menambahkan barang ke dalam keranjang.
+     * 
+     * @param barang Objek Barang yang akan ditambahkan ke keranjang.
+     */
     public void tambahBarang(Barang barang) {
         daftarBarang.add(barang);
     }
 
-    //methode untuk membersihkan barang ke keranjang
+    /**
+     * Membersihkan semua barang dalam keranjang.
+     */
     public void clearKeranjang() {
         daftarBarang.clear();
     }
 
-    //getter
+    /**
+     * Mendapatkan daftar barang dalam keranjang.
+     * 
+     * @return List<Barang> Daftar barang dalam keranjang.
+     */
     public List<Barang> getListBarang() {
         return daftarBarang;
     }

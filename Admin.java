@@ -9,23 +9,38 @@ import java.util.List;
 class Admin extends Akun {
     private List<Customer> daftarCustomer;
 
-    //constructor
+    /**
+     * Konstruktor untuk membuat objek Admin dengan username dan password.
+     * 
+     * @param username Username admin.
+     * @param password Password admin.
+     */
     public Admin(String username, String password) {
         super(username, password);
         daftarCustomer = new ArrayList<>();
     }
 
-    //methode untuk menambah customer
+    /**
+     * Menambahkan customer baru ke daftar customer admin.
+     * 
+     * @param customer Objek Customer yang akan ditambahkan.
+     */
     public void tambahCustomer(Customer customer) {
         daftarCustomer.add(customer);
     }
 
-    //methode getter
+    /**
+     * Mendapatkan daftar customer yang dimiliki oleh admin.
+     * 
+     * @return List<Customer> Daftar customer admin.
+     */
     public List<Customer> getDaftarCustomer() {
         return daftarCustomer;
     }
 
-    //methode untuk melihat daftar transaksi
+   /**
+     * Menampilkan daftar transaksi yang telah selesai untuk setiap pelanggan.
+     */
     public void lihatTransaksi() {
         System.out.println("Daftar Transaksi:");
         for (Customer customer : daftarCustomer) {
@@ -47,7 +62,11 @@ class Admin extends Akun {
         }
     }
 
-    //methode untuk melihat daftar barang
+     /**
+     * Menampilkan daftar barang terbaru dari objek ListBarang.
+     * 
+     * @param listBarang Objek ListBarang yang berisi daftar barang.
+     */
     public void lihatDaftarBarang(ListBarang listBarang) {
         System.out.println("Daftar Barang Terbaru:");
         listBarang.displayBarang();

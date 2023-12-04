@@ -10,36 +10,62 @@ class Customer extends Akun {
     private Keranjang keranjang;
     private List<Transaksi> transaksiSelesai;
 
-    //constructor
+    /**
+     * Konstruktor untuk membuat objek Customer dengan username dan password.
+     * 
+     * @param username Username pelanggan.
+     * @param password Password pelanggan.
+     */
     public Customer(String username, String password) {
         super(username, password);
         keranjang = new Keranjang();
         transaksiSelesai = new ArrayList<>();
     }
 
-    //getter
+    /**
+     * Mendapatkan daftar transaksi selesai pelanggan.
+     * 
+     * @return List<Transaksi> Daftar transaksi selesai pelanggan.
+     */
     public List<Transaksi> getTransaksiSelesai() {
         return transaksiSelesai;
     }
 
-    //methode untuk melihat list barang
+    /**
+     * Menampilkan list barang yang dijual.
+     * 
+     * @param listBarang Objek ListBarang yang berisi daftar barang.
+     */
     public void lihatListBarang(ListBarang listBarang) {
         System.out.println("List Barang yang Dijual:");
         listBarang.displayBarang();
     }
 
-    // Fungsi untuk melihat daftar barang terbaru setelah admin menambahkan barang
+    /**
+     * Melihat daftar barang terbaru setelah admin menambahkan barang.
+     * 
+     * @param admin      Objek Admin yang melakukan penambahan barang.
+     * @param listBarang Objek ListBarang yang berisi daftar barang.
+     */
     public void lihatDaftarBarangTerbaru(Admin admin, ListBarang listBarang) {
         admin.lihatDaftarBarang(listBarang);
     }
 
-    //methode untuk menambahkan barang ke keranjang
+    /**
+     * Menambahkan barang ke keranjang pelanggan.
+     * 
+     * @param barang Objek Barang yang akan ditambahkan ke keranjang.
+     */
     public void tambahKeKeranjang(Barang barang) {
         keranjang.tambahBarang(barang);
         System.out.println(barang.getNama() + " telah ditambahkan ke keranjang.");
     }
 
-    //methode untuk melakukan checkout
+    /**
+     * Melakukan proses checkout dengan metode pembayaran yang dipilih.
+     * 
+     * @param metodePembayaran Objek Pembayaran yang akan digunakan.
+     */
     public void checkout(Pembayaran metodePembayaran) {
         List<Barang> barangDibeli = keranjang.getListBarang();
         if (barangDibeli.isEmpty()) {
@@ -53,7 +79,9 @@ class Customer extends Akun {
         }
     }
 
-    //methode untuk melihat history belanja
+    /**
+     * Melihat riwayat belanja pelanggan.
+     */
     public void lihatHistoryBelanja() {
         System.out.println("History Belanja:");
         for (Transaksi transaksi : transaksiSelesai) {

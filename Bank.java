@@ -6,12 +6,20 @@
 class Bank extends Pembayaran {
     private String bank;
 
-    //constructor
+    /**
+     * Konstruktor untuk membuat objek Bank dengan nama bank.
+     * 
+     * @param bank Nama bank untuk metode pembayaran transfer bank.
+     */
     public Bank(String bank) {
         this.bank = bank;
     }
 
-    //methote yang dioverride dari class Pembayaran
+    /**
+     * Mengimplementasikan proses pembayaran menggunakan metode transfer bank.
+     * 
+     * @param total Jumlah total yang harus dibayar.
+     */
     @Override
     public void prosesPembayaran(double total) {
         System.out.println("Pembayaran sebesar Rp" + total + " dengan transfer bank berhasil.");

@@ -4,7 +4,12 @@
  * @version 04/12/2023
  */
 class COD extends Pembayaran {
-    //methode yang di override dari class Pembayaran
+    
+    /**
+     * Mengimplementasikan proses pembayaran menggunakan metode Cash On Delivery (COD).
+     * 
+     * @param total Jumlah total yang harus dibayar.
+     */
     @Override
     public void prosesPembayaran(double total) {
         System.out.println("Pembayaran sebesar Rp" + total + " dengan metode COD berhasil.");

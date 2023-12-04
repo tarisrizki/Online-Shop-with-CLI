@@ -9,14 +9,23 @@ public class Invoice {
     public Transaksi transaksi;
     public Pembayaran pembayaran;
 
-    //constructor
+    /**
+     * Konstruktor untuk membuat objek Invoice dengan transaksi dan metode pembayaran.
+     * 
+     * @param transaksi   Objek Transaksi yang berisi detail pembelian.
+     * @param pembayaran  Objek Pembayaran yang digunakan untuk transaksi.
+     */
     public Invoice(Transaksi transaksi, Pembayaran pembayaran) {
         this.id = counter++;
         this.transaksi = transaksi;
         this.pembayaran = pembayaran;
     }
 
-    // Getter sesuai kebutuhan
+    /**
+     * Mendapatkan ID unik dari invoice.
+     * 
+     * @return int ID unik dari invoice.
+     */
     public int getId() {
         return id;
     }

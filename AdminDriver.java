@@ -11,14 +11,24 @@ class AdminDriver extends Driver {
     public ListBarang listBarang;
     public ArrayList<Transaksi> listTransaksi;
 
-    //constructor
+    /**
+     * Konstruktor untuk membuat objek AdminDriver dengan admin, daftar barang, dan daftar transaksi.
+     * 
+     * @param akun          Objek Admin yang akan dioperasikan.
+     * @param listBarang    Objek ListBarang yang berisi daftar barang.
+     * @param listTransaksi ArrayList<Transaksi> yang berisi daftar transaksi.
+     */
     public AdminDriver(Admin akun, ListBarang listBarang, ArrayList<Transaksi> listTransaksi) {
         this.akun = akun;
         this.listBarang = listBarang;
         this.listTransaksi = listTransaksi;
     }
 
-    // Fungsi atau menu admin
+    /**
+     * Menampilkan menu admin dan meminta input dari admin untuk melakukan berbagai operasi.
+     * 
+     * @param scanner Objek Scanner untuk mendapatkan input dari admin.
+     */
     public void menuAdmin(Scanner scanner) {
         int choice;
         do {
@@ -55,7 +65,12 @@ class AdminDriver extends Driver {
         } while (choice != 5);
     }
 
-    //methode tambah barang
+   /**
+     * Menambahkan barang baru ke daftar barang menggunakan input dari admin.
+     * 
+     * @param listBarang Objek ListBarang yang akan diupdate.
+     * @param scanner    Objek Scanner untuk mendapatkan input dari admin.
+     */
     private void tambahBarang(ListBarang listBarang, Scanner scanner) {
         System.out.print("Masukkan ID Barang: ");
         String id = scanner.nextLine();
@@ -69,7 +84,12 @@ class AdminDriver extends Driver {
         System.out.println("Barang berhasil ditambahkan!");
     }
 
-    //methode untuk menghapus barang
+    /**
+     * Menghapus barang dari daftar barang menggunakan input ID dari admin.
+     * 
+     * @param listBarang Objek ListBarang yang akan diupdate.
+     * @param scanner    Objek Scanner untuk mendapatkan input dari admin.
+     */
     private void hapusBarang(ListBarang listBarang, Scanner scanner) {
         System.out.print("Masukkan ID Barang yang akan dihapus: ");
         String id = scanner.nextLine();
@@ -79,7 +99,12 @@ class AdminDriver extends Driver {
         System.out.println("Barang berhasil dihapus!");
     }
 
-    //methode untuk mengedit barang
+   /**
+     * Mengedit informasi barang dalam daftar menggunakan input ID dari admin.
+     * 
+     * @param listBarang Objek ListBarang yang akan diupdate.
+     * @param scanner    Objek Scanner untuk mendapatkan input dari admin.
+     */
     private void editBarang(ListBarang listBarang, Scanner scanner) {
         System.out.print("Masukkan ID Barang yang akan diubah: ");
         String id = scanner.nextLine();

@@ -6,7 +6,12 @@
 import java.util.Scanner;
 
 public class Driver {
-    //methode untuk login
+    /**
+     * Melakukan proses login untuk user atau admin.
+     * 
+     * @param admin      Objek Admin yang akan melakukan login.
+     * @param listBarang Objek ListBarang yang berisi daftar barang.
+     */
     public static void login(Admin admin, ListBarang listBarang) {
         Scanner scanner = new Scanner(System.in);
         try {//exeption handling

@@ -11,7 +11,13 @@ public class CustomerDriver extends Driver {
     public Transaksi transaksi;
     public ListBarang barang;
 
-    //methode untuk menampilkan menu pelanggan
+    /**
+     * Menampilkan menu pelanggan dan meminta input untuk melakukan berbagai operasi.
+     * 
+     * @param pelanggan  Objek Customer yang akan melakukan interaksi.
+     * @param listBarang Objek ListBarang yang berisi daftar barang.
+     * @param scanner    Objek Scanner untuk mendapatkan input dari pelanggan.
+     */
     public void menuPelanggan(Customer pelanggan, ListBarang listBarang, Scanner scanner) {
         int choice;
         do {
@@ -63,7 +69,12 @@ public class CustomerDriver extends Driver {
         } while (choice != 5);
     }
 
-    //methode untuk menampilkan metode pembayaran
+    /**
+    * Menampilkan menu metode pembayaran dan meminta pelanggan untuk memilih metode pembayaran.
+    * 
+    * @param pelanggan Objek Customer yang akan melakukan pembayaran.
+    * @param scanner   Objek Scanner untuk mendapatkan input dari pelanggan.
+    */
     public void pilihMetodePembayaran(Customer pelanggan, Scanner scanner) {
         System.out.println("Pilih Metode Pembayaran:");
         System.out.println("1. QRIS Payment");
