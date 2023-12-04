@@ -5,11 +5,19 @@
  */
 class QRIS extends Pembayaran {
     private String qrCode;
-
+    /**
+     * Konstruktor untuk membuat objek QRIS dengan QR Code tertentu.
+     * 
+     * @param qrCode String QR Code untuk metode pembayaran QRIS.
+     */
     public QRIS(String qrCode) {
         this.qrCode = qrCode;
     }
-
+    /**
+     * Metode yang dioverride dari kelas Pembayaran untuk melakukan proses pembayaran dengan QRIS.
+     * 
+     * @param total Jumlah total pembayaran.
+     */
     @Override
     public void prosesPembayaran(double total) {
         System.out.println("Pembayaran sebesar Rp" + total + " dengan QRIS berhasil.");

@@ -7,6 +7,11 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
+  /**
+     * Metode main sebagai titik masuk program utama.
+     * 
+     * @param args Argumen dari command line.
+     */
     public static void main(String[] args) {
         boolean program = true;
         Admin admin = new Admin("admin", "admin123");
